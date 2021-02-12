@@ -1,12 +1,13 @@
-# require 'open-uri'
+require 'open-uri'
+require 'json'
 
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+ingredients = JSON.parse(open(url).read)
 
-# records = JSON.parse(File.read('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'))
-# console.log(records)
-# records.each do |record|
-#   Ingredient.create!(record)
-# end
+ingredients["drinks"].each do |drink|
+  Ingredient.create!(name: drink["strIngredient1"])
+end
 
-Ingredient.create(name: "lemon")
-Ingredient.create(name: "ice")
-Ingredient.create(name: "mint leaves")
+# Ingredient.create(name: "lemon")
+# Ingredient.create(name: "ice")
+# Ingredient.create(name: "mint leaves")

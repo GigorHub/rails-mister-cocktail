@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h2>Add a cocktail dose</h1>
+      <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+        <%= f.input :description %>
+        <%= f.association :ingredient %>
+        <%= f.submit class: "btn btn-primary" %> | <%= link_to 'Back', cocktails_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
